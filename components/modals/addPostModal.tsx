@@ -52,9 +52,11 @@ export default function AddPostModal({ visible, onClose }: any) {
       .catch((err) => {
         alert("Failed to add post");
         console.log(err);
-      });
+      })
+      .finally(() => {
+        setLoading(false);
+      })
 
-    setLoading(false);
   };
 
   return (
@@ -165,7 +167,7 @@ export default function AddPostModal({ visible, onClose }: any) {
           />
         </View>
         <Button
-          disabled={!title || !description || loading}
+          disabled={!title || !description || loading || !image}
           mode="contained"
           style={{ width: "100%" }}
           onPress={handleAddPost}

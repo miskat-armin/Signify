@@ -71,7 +71,8 @@ export default function PostPage() {
   useEffect(() => {
     const q = query(
       collection(db, "comments"),
-      where("postId", "==", id)
+      where("postId", "==", id),
+      // orderBy("createdAt", "desc")
     );
     const unsubscribe = onSnapshot(q, async (snapshot) => {
       const data = snapshot.docs.map(async (document) => {
@@ -91,7 +92,7 @@ export default function PostPage() {
 
       Promise.all(data)
         .then((res) => {
-          setComments(res);
+          setComments(res.sort((a, b) => b.createdAt - a.createdAt));
         })
         .finally(() => {
           setCommentsLoading(false);

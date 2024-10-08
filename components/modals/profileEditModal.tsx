@@ -19,7 +19,7 @@ export default function ProfileEditModal({ userInfo }: { userInfo?: user }) {
   const [username, setUsername] = useState(userInfo?.username);
   const [phone, setPhone] = useState(userInfo?.phone);
 
-  const onChangeBirthday = (value) => {
+  const onChangeBirthday = (value : any) => {
     setBirthday(value);
   };
 
@@ -31,7 +31,7 @@ export default function ProfileEditModal({ userInfo }: { userInfo?: user }) {
       {
         username: username,
         phone: phone,
-        birthday: birthday,
+        birthday: birthday || null
       },
       { merge: true }
     )
@@ -84,7 +84,7 @@ export default function ProfileEditModal({ userInfo }: { userInfo?: user }) {
             </View>
 
             <View>
-              <Text variant="labelLarge">Change birthday</Text>
+              <Text variant="labelLarge">Change phone</Text>
               <TextInput
                 mode="outlined"
                 label="Phone"

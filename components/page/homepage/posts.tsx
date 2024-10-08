@@ -26,7 +26,7 @@ export default function Posts() {
     const postQuery = query(
       collection(db, "posts"),
       orderBy("createdAt", "desc"),
-      limit(25)
+      limit(5)
     );
     const unsubscribe = onSnapshot(postQuery, (snapshot) => {
       const resPosts = snapshot.docs.map(async (document) => {
@@ -57,13 +57,13 @@ export default function Posts() {
   }, []);
 
   const loadMore = () => {
-    if (!posts) return;
+    if (posts.length===0) return;
     setIsFetchingMore(true);
     const postQuery = query(
       collection(db, "posts"),
       orderBy("createdAt", "desc"),
       startAfter(posts[posts.length - 1]?.createdAt),
-      limit(25)
+      limit(5)
     );
 
     const unsubscribe = onSnapshot(postQuery, (snapshot) => {

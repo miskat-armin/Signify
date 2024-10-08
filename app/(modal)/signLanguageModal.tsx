@@ -92,7 +92,7 @@ export default function CameraModal() {
         body: formData,
       });
 
-      const data = await response.json(); // axios auto result json kore, but fetch doesnot
+      const data = await response.json(); 
       setResults(data);
     } catch (e) {
       console.log(e);
@@ -102,7 +102,7 @@ export default function CameraModal() {
   useEffect(() => {
     if (!hasPermission) return;
     if (!isExecuting && camera.current) {
-      setIsExecuting(true);
+      setIsExecuting(true); 
 
       getPrediction()
         .then(() => {})

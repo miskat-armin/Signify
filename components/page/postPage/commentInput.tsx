@@ -19,10 +19,15 @@ export default function CommentInput({
       alert("Failed to add comment");
       return;
     }
+    if (comment===""){
+        alert("Failed to add comment");
+        return;
+    }
     addDoc(collection(db, "comments"), {
       postId: postId,
       userId: userId,
       comment: comment,
+      createdAt: Date.now()
     })
       .then(() => {
         setComment("");

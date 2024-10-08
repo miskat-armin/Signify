@@ -19,6 +19,7 @@ export default function SignUp() {
   const [phone, setPhone] = useState("");
   const [image, setImage] = useState<string | null>(null);
   const [usernameExists, setUsernameExists] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   // GraphQL
   const [country, setCountry] = useState("");
@@ -90,13 +91,18 @@ export default function SignUp() {
       return;
     }
 
+    setLoading(true);
     signup(email, password, username, phone, { country, state }, imageUrl)
       .then(() => {
         router.replace("/(tabs)");
       })
       .catch((error) => {
         alert(error);
-      });
+      })
+      .finally( () => {
+        setLoading(false);
+      })
+      
   };
 
   const pickImage = async () => {
@@ -172,6 +178,7 @@ export default function SignUp() {
           value={confirmPassword}
           onChangeText={setConfirmPassword}
           placeholder="Confirm Password"
+          secureTextEntry
         />
         <TextInput value={phone} onChangeText={setPhone} placeholder="Phone" />
 
@@ -215,7 +222,7 @@ export default function SignUp() {
             })}
         </Picker>
 
-        <Button mode="contained" onPress={Signup}>
+        <Button mode="contained" onPress={Signup} disabled={loading}>
           Sign up
         </Button>
       </View>

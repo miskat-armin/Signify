@@ -90,7 +90,7 @@ export default function CrystalReport() {
         <strong>Total Users:</strong> <span id="total-users">${totalUsers}</span>
     </div>
     <div class="report-item">
-        <strong>Average Rating:</strong> <span id="average-rating">${averageRating}</span>
+        <strong>Average Rating:</strong> <span id="average-rating">${averageRating.toFixed(2)}</span>
     </div>
     <div class="report-item">
         <strong>Total Number of Posts:</strong> <span id="total-posts">${totalPosts}</span>

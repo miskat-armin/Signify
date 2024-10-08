@@ -21,7 +21,7 @@ const WebViewModal = () => {
     <View>
       <IconButton
         icon={() => (
-          <AntDesign name="right" size={24} color={theme.colors.primary} />
+          <AntDesign name="right" size={24} color={"black"} />
         )}
         onPress={showModal}
       />
@@ -37,7 +37,7 @@ const WebViewModal = () => {
         >
           <WebView
             style={{ flex: 1 }}
-            source={{ uri: "https://www.youtube.com" }}
+            source={{ uri: "https://www.youtube.com/watch?v=z08yRPKmrHk&t=2s" }}
           />
         </Modal>
       </Portal>
